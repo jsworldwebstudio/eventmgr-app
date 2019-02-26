@@ -5,10 +5,13 @@ import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
+import ScrollToTop from './app/common/util/ScrollToTop';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <ScrollToTop>
+      <App />
+    </ScrollToTop>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import { Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../store/store';
 import NavBar from '../../features/nav/NavBar/NavBar';
 import EventForm from '../../features/event/EventForm/EventForm';
 import EventDashboard from '../../features/event/EventDashboard/EventDashboard';
@@ -13,6 +15,7 @@ import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage'
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
       <div>
         <Switch>
         <Route exact path="/" component={HomePage} />
@@ -26,7 +29,8 @@ class App extends Component {
               <Container className="main">
                 <Switch>
                   <Route path="/events" component={EventDashboard} />
-                  <Route path="/events/:id" component={EventDetailedPage} />
+                  <Route path="/event/:id" component={EventDetailedPage} />
+                  <Route path="/manage/:id" component={EventForm} />
                   <Route path="/people" component={PeopleDashboard} />
                   <Route path="/profile/:id" component={UserDetailedPage} />
                   <Route path="/settings" component={SettingsDashboard} />
@@ -37,6 +41,7 @@ class App extends Component {
           )}
         />
       </div>
+      </Provider>
     );
   }
 }
